@@ -1,0 +1,35 @@
+image:
+  name: docker/compose:latest
+services:
+  - docker:dind
+
+before_script:
+  - docker version
+  - docker-compose version
+
+stages:
+  - lint
+  - test
+
+before_script:
+  - echo "Starting CI/CD Pipeline..."
+
+lint_python:
+  stage: lint
+  image: python:3.11.7
+  script:
+    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - echo "TEST_DATABASE_URL=mysql+mysqlconnector://$DATABASE_USERNAME:$DATABASE_PASSWORD@mariadb/test_database_name"
+    - pip install flake8
+    - flake8 --config=backend/app/.flake8 backend/app/
+    - echo "Linting Test Completed Sucessfully"
+
+test_backend:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - docker-compose -f docker-compose.dev.yml run fast_api pytest -p no:warnings tests
+    - echo "Test Completed Sucessfully"
+  
+after_script:
+  - echo "CI/CD Pipeline finished."

@@ -1,0 +1,25 @@
+[flake8]
+# General settings
+max-line-length = 90
+exclude = 
+    .git,
+    __pycache__,
+    build,
+    dist,
+    venv,
+    .venv,
+    migrations
+
+; ignore =
+;     E203,  # Whitespace before ':' (conflicts with black)
+;     E231,  # Missing whitespace after ',', ';', or ':'
+;     E501,  # Line too long (handled by black)
+;     W503,  # Line break occurred before a binary operator (conflicts with black)
+
+# Documentation
+; docstring-convention = numpy  # Choose between numpy, google, etc.
+
+# Plugins
+use-flake8-tabs = True   # If using tabs instead of spaces
+import-order-style = google  # For import order (needs flake8-import-order plugin)
+application-import-names = myproject  # For import order (needs flake8-import-order plugin)

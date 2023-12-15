@@ -1,0 +1,31 @@
+const APIPATHS = {
+  STARWARS_PATH: 'https://swapi.dev/api/people',
+  GET_SELF: '/api/users/self',
+  GET_USERS: '/api/eset_db/users',
+  ODIN_CHECK: '/api/odin',
+  GRANITE_CIRCUIT_SEARCH: '/api/granite/circuit_search',
+  ISE_CHECK: '/api/tools/ise/run_check',
+  REMEDY_SEARCH: '/api/tools/remedy/search',
+  REMEDY_DISCONNECT: '/api/tools/remedy/disconnect',
+  REMEDY_CONNECT: '/api/tools/remedy/connect',
+  REMEDY_SUBMIT_WO: '/api/tools/remedy/submitWo',
+  REMEDY_DISCONNECT_WO: '/api/tools/remedy/submitDisconnectWo',
+  REMEDY_SUBMIT_FEEDBACK: '/api/tools/remedy/submitFeedback',
+  REFRESH_GRANITE_DATA: '/api/tools/remedy/refreshGranite',
+  GITLAB_RELEASES: '/api/gitlab/releases',
+  HOMEPAGE_JSON: '/files/homepage.json',
+  SEEFA_REPORTING_JSON: '/files/seefa_reporting.json',
+  GET_VOICE_GATE: '/api/eset_db/sese_vgw_matrix',
+  GENERATE_VOICE_REPORT: '/api/voice_gateway',
+  SUBMIT_SWIP: 'api/tools/swip/submit/',
+  EBU_TOOL: '/api/tools/ebu',
+  SE_DD_DICTIONARY: '/api/eset_db/se_dd_',
+  GET_EDIT_FORM: '/api/eset_db/',
+  SEEFA_REPORTING: '/api/eset_db/seefa_reporting',
+  SEEFA_ERROR_DECODER: '/api/eset_db/seefa_error_decoder',
+  RUN_PYTHON: '/api/python/',
+  ENE_GET_CUSTOMER_INFO: '/api/tools/ene/getCustomerDetails',
+  JIRA: 'api/jira'
+};
+
+export default APIPATHS;

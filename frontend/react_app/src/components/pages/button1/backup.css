@@ -1,0 +1,92 @@
+/* CSS styles in SearchComponent.css */
+.search-component {
+    font-family: "Arial", sans-serif;
+    max-width: 600px;
+    margin: 2rem auto;
+  
+    height: 100vh; /* Full height to center vertically in the viewport */
+    padding: 20px; /* Add some padding around */
+  }
+  
+  .search-input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  
+    padding: 10px; /* Space between input and button */
+    margin-right: 8px; /* Space between input and button */
+    border: 1px solid #ced4da; /* Light grey border */
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow like MUI */
+    transition: border-color 0.2s; /* Transition for the border color */
+    width: 300px; /* Fixed width or you can use max-width */
+    height: 50px; /* Fixed width or you can use max-width */
+  }
+  
+  .search-button {
+    padding: 0.5rem 1rem;
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #003d99;
+  }
+  
+  .card {
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: white;
+  }
+  
+  .card div {
+    margin-bottom: 0.5rem;
+  }
+  
+  
+  /* new changes  */
+  .search-container {
+    display: flex;
+    justify-content: center; /* This centers horizontally */
+    margin-top: 20px; /* Add margin at the top if needed */
+    gap: 8px; /* This creates space between select and input new changes 10 nov 5 est*/ 
+  }
+  
+  
+  /* more new changes 10 nov 5 est  */
+  
+  .search-label {
+    margin-bottom: 0; /* Aligns the label with the dropdown */
+    /* Adjust padding-top if more alignment is needed */
+    padding-top: 2px; /* Adjust this value based on your actual layout and font size */
+  }
+  
+  /* Add this if you want to ensure the select and input have the same height */
+  .dropdown-select,
+  .search-input,
+  .search-button {
+    height: 40px; /* Adjust as needed */
+  }
+  
+  /* .dropdown-select{
+    height: 35px;
+    width: 80px;
+  } */
+  
+  .search-label-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the label vertically with the dropdown */
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }

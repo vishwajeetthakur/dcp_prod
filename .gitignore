@@ -1,0 +1,30 @@
+__pycache__
+backend/__pycache__
+backend/app/__pycache__
+backend/app/.pytest_cache
+backend/app/crud/__pycache__
+backend/app/models/__pycache__
+backend/app/routers/__pycache__
+backend/app/schemas/__pycache__
+backend/app/tests/__pycache__
+backend/app/tests/.pytest_cache
+mysql-data
+frontend/react_app/node_modules
+frontend/.generate_component
+# frontend/react_app/package-lock.json
+backend/nginx/logs/
+.idea/
+test.py 
+network_elements.xlsx
+a.py
+b.py 
+backend/app/__pycache__
+backend/app/crud/__pycache__
+backend/app/db/__pycache__/
+backend/app/schemas/__pycache__
+# frontend/react_app/package-lock.json
+mysql-data/
+gitlab-learn.yml
+test.yml
+backup.env.dev
+# .env.dev

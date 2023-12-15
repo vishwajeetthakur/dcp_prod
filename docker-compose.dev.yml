@@ -1,0 +1,79 @@
+version: '3.4'
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.11.6
+    ports:
+      - "3306:3306"
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./backend/app/init.sql:/data/application/init.sql
+    env_file:
+      - .env.dev
+    healthcheck:
+      test: "mariadb -u$${DATABASE_USERNAME} -p$${DATABASE_PASSWORD} -e 'SHOW DATABASES'"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  fast_api:
+    container_name: fastapi_io_tools_production
+    image: python:3.11.7-alpine3.17
+    build:
+      context: backend/app
+      dockerfile: Dockerfile
+    
+    command: gunicorn main:app -c gunicorn.conf.py # working
+     
+    expose:
+      - '8088'
+    volumes:
+      - ./backend/app:/usr/src/app
+      - .env.dev:/usr/src/app/.env # change original .env.dev:/usr/src/app/.env
+    env_file:
+      - .env.dev # chance .env.dev
+    # depends_on:
+    #   mariadb:
+    #     condition: service_healthy
+    depends_on:
+      - mariadb
+          # condition: service_healthy
+
+  react_app:
+    container_name: react_io_tools_production
+    image: node:16.20.2
+    build:
+      context: frontend/react_app
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/react_app:/usr/src/app
+    ports:
+      - '3000:3000'
+    environment:
+      - REACT_APP_API_URL=http://nginx_api:8088
+
+    command: npm start
+    # command: npm run build
+
+  nginx_api:
+    container_name: nginx_io_tools_fastapi_production
+    image: nginx:1.22.0-alpine
+    build:
+      context: backend/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/nginx/nginx.dev.conf:/etc/nginx/conf.d/nginx.conf
+      - ./backend/nginx/logs/access.log:/var/log/nginx/access.log
+      - ./backend/nginx/logs/debug.log:/var/log/nginx/debug.log
+    ports:
+      - '8088:8088'
+    depends_on:
+      - fast_api
+      - react_app
+    # environment:
+    #   - REACT_APP_API_URL=http://localhost:8088
+
+volumes:
+  mysql-data:
