@@ -32,8 +32,10 @@ test_backend:
     - apk add openssl
     - echo "********* openssl installed sucessfully ******** "
     - echo "Encrypting ENV file"
-    - openssl enc -d -aes-256-cbc -in .env.enc -out .env.dev -k "dcp_rajeev" -pbkdf2
+    - openssl enc -d -aes-256-cbc -in .env.enc -out .env.dev -k "$ENCRYPTION_PASSPHRASE" -pbkdf2
+    - ls -la
     - export $(cat .env.dev | xargs)
+    - ls -la
     - echo $(cat .env.dev)
     - echo "decryption SucessFULL"
     - echo "Running tests..."
