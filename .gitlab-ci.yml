@@ -2,13 +2,8 @@ image:
   name: docker/compose:latest
 services:
   - docker:dind
-
-before_script:
-  - docker version
-  - docker-compose version
-
+  
 stages:
-  # - lint
   - test
 
 before_script:
@@ -33,8 +28,6 @@ test_backend:
     - echo "********* openssl installed sucessfully ******** "
     - echo "Encrypting ENV file"
     - openssl enc -d -aes-256-cbc -in .env.enc -out .env.dev -k "$ENCRYPTION_PASSPHRASE" -pbkdf2
-    - ls -la # test
-    - echo $(cat .env.dev) # test
     - echo "decryption SucessFULL"
     - echo "Running tests..."
     - docker-compose -f docker-compose.dev.yml run fast_api pytest -p no:warnings tests
